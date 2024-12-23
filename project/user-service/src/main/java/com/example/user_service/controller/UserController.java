@@ -1,6 +1,7 @@
 package com.example.user_service.controller;
 
 import com.example.user_service.dto.UserDto;
+import com.example.user_service.jpa.UserEntity;
 import com.example.user_service.service.UserService;
 import com.example.user_service.vo.Greeting;
 import com.example.user_service.vo.RequestUser;
@@ -13,8 +14,12 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.modelmapper.convention.MatchingStrategies.STRICT;
 import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.OK;
 
 @Slf4j
 @RestController
@@ -32,11 +37,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("health_check")
+    @GetMapping("/health_check")
     public String status() {
-        return "It's working in UserService";
+        return String.format("It's working in UserService on Port %s",
+                env.getProperty("local.server.port"));
     }
-    @GetMapping("welcome")
+
+    @GetMapping("/welcome")
     public String welcome() {
 //        return env.getProperty("greeting.message");
         return greeting.getMessage();
@@ -50,5 +57,22 @@ public class UserController {
         UserDto responseDto = userService.createUser(userDto);
         ResponseUser responseUser = mapper.map(responseDto, ResponseUser.class);
         return ResponseEntity.status(CREATED).body(responseUser);
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<ResponseUser>> getUsers() {
+        Iterable<UserEntity> usersByAll = userService.getUsersByAll();
+        List<ResponseUser> result = new ArrayList<>();
+        usersByAll.forEach(v -> {
+            result.add(new ModelMapper().map(v, ResponseUser.class));
+        });
+        return ResponseEntity.status(OK).body(result);
+    }
+
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<ResponseUser> getUserById(@PathVariable String userId) {
+        UserDto userDto = userService.getUserByUserId(userId);
+        ResponseUser result = new ModelMapper().map(userDto, ResponseUser.class);
+        return ResponseEntity.status(OK).body(result);
     }
 }
