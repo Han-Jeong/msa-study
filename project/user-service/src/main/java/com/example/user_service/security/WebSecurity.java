@@ -32,6 +32,7 @@ public class WebSecurity {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request ->{
                     request.requestMatchers(antMatcher("/actuator/**")).permitAll();
+                    request.requestMatchers("/user-service/**").permitAll();
                     request.requestMatchers(antMatcher("/user-service/users/**")).permitAll();});
 //        http.addFilterBefore(customAuthenticationFilter(http), UsernamePasswordAuthenticationFilter.class);
 
