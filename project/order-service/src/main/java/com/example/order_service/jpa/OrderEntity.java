@@ -32,9 +32,9 @@ public class OrderEntity implements Serializable {
     @Column(nullable = false)
     private Integer totalPrice;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    @CreationTimestamp
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    private LocalDateTime createdAt;
+//    @Column(name = "created_at", nullable = false, updatable = false)
+//    @CreationTimestamp
+//    @ColumnDefault("CURRENT_TIMESTAMP")
+//    private LocalDateTime createdAt;
 
 }
