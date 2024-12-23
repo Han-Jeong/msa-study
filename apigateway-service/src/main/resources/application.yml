@@ -24,8 +24,12 @@ spring:
           uri: lb://USER-SERVICE    # -> 동적 주소 적용 가능(static한 주소를 사용하지 않아도 되는 이점)
           predicates:
             - Path=/user-service/**
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog-service/**
         - id: first-service
-          uri: lb://MY-FIRST-SERVICE    # -> 동적 주소 적용 가능(static한 주소를 사용하지 않아도 되는 이점)
+          uri: lb://MY-FIRST-SERVICE
           predicates:
             - Path=/first-service/**
           filters:
