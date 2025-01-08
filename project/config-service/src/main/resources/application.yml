@@ -8,4 +8,6 @@ spring:
     config:
       server:
         git:
-          uri: file:///Users/hann/study/test
+          uri: https://github.com/Han-Jeong/msa_study_yml
+#          uri: file:///Users/hann/study/test
+

@@ -42,7 +42,7 @@ public class WebSecurity {
                 .authorizeHttpRequests(authorize ->
                         authorize
 //                                .requestMatchers("/users/**", "/users").permitAll()
-                                .requestMatchers("/actuator/**").permitAll()
+                                .requestMatchers("/actuator/**", "/custom-actuator/**").permitAll()
                                 .requestMatchers("/health_check", "/welcome").permitAll()
                                 .requestMatchers(antMatcher(HttpMethod.POST,"/users")).permitAll()
                                 .requestMatchers("/error/**").permitAll()
