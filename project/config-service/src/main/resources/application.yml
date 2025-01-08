@@ -10,4 +10,15 @@ spring:
         git:
           uri: https://github.com/Han-Jeong/msa_study_yml
 #          uri: file:///Users/hann/study/test
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: msa_user
+    password: test123
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
