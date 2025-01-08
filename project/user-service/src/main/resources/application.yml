@@ -12,6 +12,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: msa_user
+    password: test123
 
 
 eureka:
