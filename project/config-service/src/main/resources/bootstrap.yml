@@ -1,0 +1,6 @@
+encrypt:
+#  key: msastudyproject123
+  key-store:
+    location: file://${user.home}/study/keystore/apiEncryption.jks
+    password: test1234
+    alias: apiEncryptionKey
