@@ -20,6 +20,11 @@
 	</properties>
 
 	<dependencies>
+		<!-- Feign Client -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
 		<!-- Spring Config Client -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
