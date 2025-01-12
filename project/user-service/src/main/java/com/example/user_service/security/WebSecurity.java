@@ -44,7 +44,7 @@ public class WebSecurity {
 //                                .requestMatchers("/users/**", "/users").permitAll()
                                 .requestMatchers("/actuator/**", "/custom-actuator/**").permitAll()
                                 .requestMatchers("/health_check", "/welcome").permitAll()
-                                .requestMatchers(antMatcher(HttpMethod.POST,"/users")).permitAll()
+                                .requestMatchers(antMatcher(HttpMethod.POST,"/users"), antMatcher(HttpMethod.POST, "/login")).permitAll()
                                 .requestMatchers("/error/**").permitAll()
                                 .requestMatchers("/users", "/users/**").access((authentication, request) -> {
                                     String clientIp = request.getRequest().getRemoteAddr();

@@ -19,7 +19,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
-@RequestMapping("/order-service")
+@RequestMapping
 @RequiredArgsConstructor
 public class OrderController {
 
